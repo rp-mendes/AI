@@ -4,4 +4,4 @@ The purpose of this dashboard is to create an overview for the Sales department 
 
 [Click here to open the dashboard](Sales%20Dashboard.pbix)
 
-<img src="Sales%20Dashboard.png">
+<img src="Sales%20Dashboard.png" border=1>
