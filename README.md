@@ -6,4 +6,4 @@ This is a list of projects I developed:
 * <b>[Netflix Movie Recommendation](Netflix_Movie_Recommendation)</b><br>The objective of this project is to build a recommendation system to recommend movies to users based on the ratings given to different movies by the users.
 
 PowerBI Dashboards:
-* <b>[Sales Dashboard](PowerBI/Sales%20Dashboard/Sales%20Dashboard.pbix)</b><br>This dashboard provides an overview for the Sales department.
+* <b>[Sales Dashboard](PowerBI/Sales%20Dashboard)</b><br>This dashboard provides an overview for the Sales department.
