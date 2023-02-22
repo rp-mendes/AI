@@ -1,4 +1,4 @@
-Please check my LinkedIn profile: https://www.linkedin.com/in/ricardo-mendes-6a75336/
+Please check my LinkedIn profile: https://www.linkedin.com/in/r-p-mendes/
 
 This is a list of projects I developed:
 * <b>[Pima Indians Diabetes Analysis](Pima_Indians_Diabetes_Analysis)</b><br>The purpose of this project is to analyze different aspects of Diabetes in the Pima Indians tribe by working with some statistics and exploratory data analysis.
