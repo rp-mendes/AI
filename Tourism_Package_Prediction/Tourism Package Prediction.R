@@ -1,8 +1,37 @@
+if (!require("tools"))
+{
+  install.packages("tools", dependencies = TRUE)
+}
 library(tools)
+
+if (!require("base"))
+{
+  install.packages("base", dependencies = TRUE)
+}
 library(base)
+
+if (!require("dplyr"))
+{
+  install.packages("dplyr", dependencies = TRUE)
+}
 library(dplyr)
+
+if (!require("ggplot2"))
+{
+  install.packages("ggplot2", dependencies = TRUE)
+}
 library(ggplot2)
+
+if (!require("ggthemes"))
+{
+  install.packages("ggthemes", dependencies = TRUE)
+}
 library(ggthemes)
+
+if (!require("caret"))
+{
+  install.packages("caret", dependencies = TRUE)
+}
 library(caret)
 
 if (!require("readxl"))
@@ -86,7 +115,7 @@ library(randomForest)
 
 
 # Reads the data
-data <- read_excel("Tourism.xlsx",sheet = "Tourism")
+data <- read_excel("./Tourism.xlsx",sheet = "Tourism")
 
 # Shows the first five rows
 head(data)
