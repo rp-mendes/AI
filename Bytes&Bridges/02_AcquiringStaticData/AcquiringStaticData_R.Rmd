@@ -1,0 +1,126 @@
+---
+title: "Acquiring Static Data in R"
+subtitle: "Bytes & Bridges - Data Engineering"
+author: "Ricardo Mendes"
+date: "2024-04-16"
+output:
+  html_notebook: default
+editor_options: 
+  markdown: 
+    wrap: sentence
+include-before: '`\newpage{}`{=latex}'
+---
+
+```{r knitr-options, include=FALSE}
+knitr::opts_chunk$set(
+  tidy = TRUE,
+  tidy.opts = list(width.cutoff=50),
+  warning = FALSE, 
+  message = FALSE,  
+  fig.align="center", 
+  out.width="70%")
+
+options(warn=-1)
+```
+
+
+# **Acquiring Static Data**
+
+In this project, let's explore how to use Python to obtain static data for any purpose you need. All the files used in this project are in the same folder as this file.
+
+## **Excel File**
+
+Excel files are widely used in companies and can be an easy to create file when you need to import structured data.
+
+```{r read-excel}
+if(!require(xlsx)) install.packages("xlsx", INSTALL_opts=c("--no-multiarch"))
+library("xlsx")
+
+car_list <- read.xlsx("Car List.xlsx", sheetIndex=1)
+head(car_list)
+
+```
+
+## **CSV File**
+
+CSV files are also used because they are easy to interoperate and consume. Reading them in Python is also pretty straightforward:
+
+``` {r read-csv}
+# Read a CSV file and show the first 5 rows
+countries <- read.csv("Countries.csv", sep = ";")
+head(countries)
+
+```
+
+## **JSON File**
+
+Another type of file that is very common is the JSON file. Here is how you can read specific values within it:
+
+```{r read-json}
+# Read the JSON file
+user_config <- jsonlite::fromJSON("UserConfig.json")
+
+# Print the values within the configuration
+cat("Username:", user_config$username, "\n")
+cat("Language:", user_config$language, "\n")
+cat("Fullscreen:", user_config$fullscreen, "\n")
+```
+
+## **Image File**
+
+It is often necessary to read image files. They can be used as icons, logos, or for any other purpose. Check below how to do that:
+
+``` {r read-image}
+
+if(!require(jpeg)) install.packages("jpeg")
+library("jpeg")
+
+# Read the image file
+image_path = "Image.jpeg"
+image <- readJPEG(image_path, native = TRUE)
+
+# Open the file in a separate window:
+plot(0:1, 0:1, type = "n", ann = FALSE, axes=FALSE)
+
+# Show the image inline
+rasterImage(image, 0, 0, 1, 1)
+
+```
+
+## **Web Pages**
+
+In some cases, you might want to read information directly from a web page, instead of selecting it, creating a file, and then reading the file.
+The code below shows one of the many ways in which you can accomplish that by reading the list of the busiest airports in 2022:
+
+``` {r read-webpage}
+# Load necessary libraries
+library(rvest)  # For web scraping
+library(dplyr)  # For data manipulation
+
+# URL of the Wikipedia page
+url <- "https://en.wikipedia.org/wiki/List_of_busiest_airports_by_passenger_traffic"
+
+# Read the HTML content from the URL
+webpage <- read_html(url)
+
+# Extract the table containing the airport data (second table on the page)
+airport_table <- html_nodes(webpage, "table.wikitable.sortable")[2]
+
+# Convert the table to a dataframe
+df_airports <- airport_table %>%
+  html_table(fill = TRUE) %>%
+  as.data.frame()
+
+# Rename columns for clarity
+colnames(df_airports) <- c("Rank", "Airport", "Location", "Country", "Code", "Total_Passengers", "Rank_Change", "Percent_Change")
+
+# Select the most relevant columns
+df_airports <- df_airports %>%
+  select(Rank, Airport, Location, Total_Passengers)
+
+# Display the resulting dataframe
+df_airports
+```
+
+
+
